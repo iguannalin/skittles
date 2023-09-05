@@ -1,4 +1,5 @@
 window.addEventListener("load", () => {
+  // color palette from https://www.learnui.design/tools/data-color-picker.html
   let colors = 
   [
       "#ffa600",
@@ -22,8 +23,8 @@ window.addEventListener("load", () => {
     }, t += t);
   }
 
-  const time = 50;
-  
+  const time = 100;
+  // fermat's sunflower code from http://rileydav.is/articles/fermat-spiral-in-javascript/
   function drawSunflower(num, scaleFactor) {
     if (scaleFactor > 2 || scaleFactor < 0) return;
     index = index+1 >= colors.length ? 0 : index + 1;
