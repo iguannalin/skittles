@@ -9,7 +9,8 @@ window.addEventListener("load", () => {
       "#a05195",
       "#665191",
       "#2f4b7c",
-      "#003f5c"
+      "#003f5c",
+      "rgb(35, 35, 35)"
   ];
   let index = -1;
   function colorCell(id, t) {
@@ -17,17 +18,19 @@ window.addEventListener("load", () => {
       const cell = document.getElementById(id);
       if (cell) {
         cell.style.backgroundColor = colors[index];
-        cell.innerHTML = "\\"; 
+        cell.innerHTML = cell.innerHTML == "/" ? "\\" : "/";
       }
       // console.log({cell, id});
     }, t += t);
   }
 
   const time = 100;
+  let delta = 1;
   // fermat's sunflower code from http://rileydav.is/articles/fermat-spiral-in-javascript/
   function drawSunflower(num, scaleFactor) {
     if (scaleFactor > 2 || scaleFactor < 0) return;
-    index = index+1 >= colors.length ? 0 : index + 1;
+    if (index < -1 || index+1 >= colors.length) delta *= -1;
+    index += delta;
     let t = time;
     let recenter = Math.floor(num/2);
     for (var i = 0; i < num; i++) {
